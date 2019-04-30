@@ -1,0 +1,39 @@
+<?php 
+  function isCorrect($string){
+		for($i;$i<strlen($string);$i++){
+			switch($string[$i]){
+				case "{":
+					$check.="{";
+				break;
+				case "(":
+					$check.="(";
+				break;	
+				case "[":
+					$check.="[";
+				break;
+				case "}":
+					if($check[strlen($check)-1]=="{"){
+						$check=substr($check,0,strlen($check)-1);
+					}
+				break;
+				case ")":
+					if($check[strlen($check)-1]=="("){
+						$check=substr($check,0,strlen($check)-1);
+					}
+				break;
+				case "]":
+					if($check[strlen($check)-1]=="["){
+						$check=substr($check,0,strlen($check)-1);
+					}
+				break;	
+			}
+		}
+		if(strlen($check)==0){
+			echo "Строка корректна!";
+		}else{
+			echo "Строка не корректна введена!";
+		}
+	}
+//----------------------------------------------------------------
+	isCorrect("{[[()]{}]}");
+?>
